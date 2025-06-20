@@ -2,11 +2,12 @@ name: Manage issue header
 
 on:
   issues:
-    types: [labeled, unlabeled]
+    types: [opened, labeled, unlabeled]
 
 jobs:
-  handle-help-wanted:
-    uses: learningequality/.github/.github/workflows/manage-issue-header.yml@main
+  call-workflow:
+    name: Call shared workflow
+    uses: MisRob/.github/.github/workflows/manage-issue-header.yml@issue-header-action
     secrets:
         LE_BOT_APP_ID: ${{ secrets.LE_BOT_APP_ID }}
         LE_BOT_PRIVATE_KEY: ${{ secrets.LE_BOT_PRIVATE_KEY }}
